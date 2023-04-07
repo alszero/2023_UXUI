@@ -7,6 +7,7 @@
 </head>
 <body>
 <div id="map" style="width:100%;height:350px;"></div>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=916a9baf54493d22aaf82545a44f6168"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -39,11 +40,16 @@ function displayMarker() {
     // 마커의 위치를 지도중심으로 설정합니다 
     marker.setPosition(map.getCenter()); 
     marker.setMap(map); 
+    console.log("내엉덩이레전드")
 
     // 아래 코드는 최초 한번만 타일로드 이벤트가 발생했을 때 어떤 처리를 하고 
     // 지도에 등록된 타일로드 이벤트를 제거하는 코드입니다 
     // kakao.maps.event.removeListener(map, 'tilesloaded', displayMarker);
 }
+
+kakao.maps.event.addListener(map, 'click', function (mouseEvent){
+  marker.setPosition(mouseEvent.latLng);
+});
 </script>
 </body>
 </html>
